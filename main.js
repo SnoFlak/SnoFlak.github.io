@@ -1,7 +1,8 @@
 import * as THREE from 'three';
 import { createIcoSphere } from './js/icosphere.js';
 import { mapRange, lerp } from './js/helpers.js';
-import { goldSphereWaypoints } from './js/waypoints.js';
+import { CameraWaypoints, BlueSphereWaypoints, GreenSphereWaypoints, PurpleSphereWaypoints } from './js/waypoints.js';
+import { createDust } from './js/dust.js';
 
 let scrollFraction = 0;
 let waypointNode = 0;
@@ -21,24 +22,43 @@ document.body.appendChild(renderer.domElement);
 const icospheres = [];
 
 
-const light = new THREE.DirectionalLight(0xffffff, 1);
+const light = new THREE.DirectionalLight(0xffffff, 0.6);
 light.position.set(0,2,0);
 light.rotation.set(0, 0, 180);
 scene.add(light);
 scene.add(new THREE.AmbientLight(0x0062a8, 1));
 
-const axesHelper = new THREE.AxesHelper(5); 
-scene.add(axesHelper);
+// const axesHelper = new THREE.AxesHelper(5); 
+// scene.add(axesHelper);
 
-const icosphere = createIcoSphere(0xEBA434, goldSphereWaypoints)
+const dust = createDust(1000);
+scene.add(dust);
+
+const icosphere = createIcoSphere(0x0041b0, BlueSphereWaypoints)
+icosphere.position.set(0,0,0);
 scene.add(icosphere);
+
+const purpleIcosphere = createIcoSphere(0x8d00b0, PurpleSphereWaypoints)
+purpleIcosphere.position.set(0,5,5);
+scene.add(purpleIcosphere);
+
+const greenIcosphere = createIcoSphere(0x00b020, GreenSphereWaypoints)
+greenIcosphere.position.set(0,0,10);
+scene.add(greenIcosphere);
+
+
 icospheres.push(icosphere);
+icospheres.push(purpleIcosphere);
+icospheres.push(greenIcosphere);
 console.log(icosphere);
 
 camera.position.set(0,0,5)
 
 function render() {
     requestAnimationFrame(render);
+
+    dust.rotation.y += 0.001;
+    dust.position.y = Math.sin(Date.now() * 0.0005) * 0.5;
 
     const delta = clock.getDelta();
     const elapsed = clock.getElapsedTime();
@@ -74,20 +94,15 @@ function render() {
         light.intensity = lerp(p1.lightIntensity, p2.lightIntensity, t);
         model.material.opacity = lerp(p1.modelAlpha, p2.modelAlpha, t);
 
-        // const settings = sphere.userData;
-        // sphere.rotation.y += settings.rotationSpeed * delta;
-        // sphere.rotation.z += settings.rotationSpeed * 0.5 * delta;
+        sphere.rotation.y += settings.rotationSpeed * delta;
+        sphere.rotation.z += settings.rotationSpeed * 0.5 * delta;
 
-        // const localTime = elapsed * settings.pulseSpeed + settings.pulseOffset;
-        // const outer = sphere.getObjectByName("outerLayer");
-        // const inner = sphere.getObjectByName("innerLayer");
-        // const light = sphere.getObjectByName("light");
-        // const model = sphere.getObjectByName("Icosphere");
+        const localTime = elapsed * settings.pulseSpeed + settings.pulseOffset;
 
-        // outer.scale.x = 1 + Math.sin(localTime) * 0.1;
-        // outer.scale.y = 1 + Math.cos(localTime * 1.2) * 0.1;
-        // outer.scale.z = 1 + Math.sin(localTime * 0.8) * 0.1;
-        // sphere.position.y += (Math.sin(localTime) / 2) * 0.005;
+        outer.scale.x = 1 + Math.sin(localTime) * 0.1;
+        outer.scale.y = 1 + Math.cos(localTime * 1.2) * 0.1;
+        outer.scale.z = 1 + Math.sin(localTime * 0.8) * 0.1;
+        sphere.position.y += (Math.sin(localTime) / 2) * 0.005;
     
         // let outerAlpha = mapRange(scrollFraction, 0, 0.2, 0, settings.outerOpacityMax);
         // let innerAlpha = mapRange(scrollFraction, 0, 0.2, 0, settings.innerOpacityMax);
@@ -105,15 +120,47 @@ function render() {
         // console.log(outer.material.opacity + " / " + inner.material.opacity + " / " + light.intensity)
     });
 
+    const camTimeline = CameraWaypoints;
+
+    let p1 = camTimeline[0];
+    let p2 = camTimeline[1];
+
+    for (let i = 0; i < camTimeline.length - 1; i++) {
+        if (scrollFraction >= camTimeline[i].percent && scrollFraction <= camTimeline[i+1].percent) {
+            p1 = camTimeline[i];
+            p2 = camTimeline[i+1];
+            break;
+        }
+    }
+
+    let t = (scrollFraction - p1.percent) / (p2.percent - p1.percent);
+    t = Math.max(0, Math.min(1, t));
+
+    camera.position.z = lerp(p1.z_pos, p2.z_pos, t);
+    camera.position.y = lerp(p1.y_pos, p2.y_pos, t);
 
     renderer.render(scene, camera);
 }
 
+const button = document.getElementById('continueButton');
+
+button.addEventListener('click', incrementGlobalTimeline);
+
+function incrementGlobalTimeline() {
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    const stepSize = Math.round(totalHeight / 10);
+    const targetY = window.scrollY + stepSize;
+    window.scrollTo({
+        top: targetY,
+        behavior: 'smooth'
+    });
+}
+
 window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
+    console.log(scrollTop);
     const docHeight = document.body.offsetHeight - window.innerHeight;
     scrollFraction = scrollTop / docHeight;
-    
 });
 
 // Handle Window Resize

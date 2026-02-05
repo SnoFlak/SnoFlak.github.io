@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { createIcoSphere, animateSphere } from './icosphere.js';
 import { createBust, animateBust } from './bust.js';
+import { createTube, animateTube } from './tubes.js';
 import { mapRange, lerp } from './helpers.js';
 import { CameraWaypoints, BlueSphereWaypoints, GreenSphereWaypoints, PurpleSphereWaypoints } from './waypoints.js';
 import { createDust } from './dust.js';
@@ -8,6 +9,7 @@ import { createDust } from './dust.js';
 let currentScroll = 0;
 let scrollFraction = 0;
 const icospheres = [];
+const tubes = [];
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -54,9 +56,27 @@ bust.position.set(3.5, -3.5, 5)
 bust.rotation.y = THREE.MathUtils.degToRad(90)
 scene.add(bust);
 
+const gTube = createTube(greenIcosphere.position, "green");
+const bTube = createTube(blueIcosphere.position, "blue");
+const pTube = createTube(purpleIcosphere.position, "purple");
+tubes.push(gTube, bTube, pTube);
+scene.add(gTube, bTube, pTube);
+
 camera.position.set(0,0,5)
 
-animateBust(bust, currentScroll);
+
+function grabSphere(sphereColor) {
+    switch(sphereColor){
+        case "green":
+            return greenIcosphere;
+        case "blue":
+            return blueIcosphere;
+        case "purple":
+            return purpleIcosphere;
+        default:
+            return blueIcosphere;
+    }
+}
 
 function animateCamera() {
     const camTimeline = CameraWaypoints;
@@ -105,6 +125,8 @@ export function render() {
 
     currentScroll = lerp(currentScroll, scrollFraction, 0.05);
 
+    let time = Date.now() * 0.002;
+
     dust.rotation.y += 0.001;
     dust.position.y = Math.sin(Date.now() * 0.0005) * 0.5;
 
@@ -116,6 +138,19 @@ export function render() {
     );
     animateCamera();
     animateBust(bust, currentScroll);
+    
+    tubes.forEach((tube) => {
+        const sphere = grabSphere(tube.userData.sphereColor);
+        animateTube(tube, sphere.position);
+    })
+
+    // curve.points[0].copy(new THREE.Vector3(3.5, -1.8, 5));
+    // curve.points[2].copy(blueIcosphere.position);
+
+    // curve.points[1].x = (bust.position.x + blueIcosphere.position.x) / 2 + Math.sin(time) * 0.5;
+    // curve.points[1].y = (bust.position.y + blueIcosphere.position.y) / 2 + Math.cos(time) * 0.5;
+    // tube.geometry.dispose(); // Clean up old memory
+    // tube.geometry = new THREE.TubeGeometry(curve, 64, 0.1, 8, false);
 
     renderer.render(scene, camera);
 }

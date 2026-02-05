@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    height: 1000vh;
+    overflow-y: scroll;
+}
+h1 {
+    position: absolute;
+    color:aliceblue;
+    z-index: 1;
+}
+canvas { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: radial-gradient(circle at center, #0062a8 0%, #000000 40%);
+}
+#continueMessage {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#continueButtonContainer {
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#continueButton {
+    background: none;
+    border: none;
+    color: aliceblue;
+}

@@ -25,10 +25,10 @@ export const BlueSphereWaypoints = [
     },
     {
         percent: 0.5,
-        outerAlpha: 0.3,
-        innerAlpha: 0.5,
-        lightIntensity: 5,
-        modelAlpha: 0.5
+        outerAlpha: 0,
+        innerAlpha: 0,
+        lightIntensity: 0,
+        modelAlpha: 0
     },
     {
         //show core/light
@@ -37,13 +37,6 @@ export const BlueSphereWaypoints = [
         innerAlpha: 1,
         lightIntensity: 10,
         modelAlpha: 1
-    },
-    {
-        percent: 0.7,
-        outerAlpha: 0,
-        innerAlpha: 0,
-        lightIntensity: 0,
-        modelAlpha: 0
     },
     {
         //show everything
@@ -89,18 +82,18 @@ export const PurpleSphereWaypoints = [
     },
     {
         //fade out with zoom
-        percent: 0.45,
+        percent: 0.5,
         outerAlpha: 0,
         innerAlpha: 0,
         lightIntensity: 0,
         modelAlpha: 0
     },
     {
-        percent: 0.7,
-        outerAlpha: 0,
-        innerAlpha: 0,
-        lightIntensity: 0,
-        modelAlpha: 0
+        percent: 0.6,
+        outerAlpha: 0.6,
+        innerAlpha: 1,
+        lightIntensity: 10,
+        modelAlpha: 1
     },
     {
         //show everything
@@ -146,21 +139,20 @@ export const GreenSphereWaypoints = [
     },
     {
         //fade out with zoom
-        percent: 0.55,
+        percent: 0.5,
         outerAlpha: 0,
         innerAlpha: 0,
         lightIntensity: 0,
         modelAlpha: 0
     },
     {
-        percent: 0.7,
-        outerAlpha: 0,
-        innerAlpha: 0,
-        lightIntensity: 0,
-        modelAlpha: 0
+        percent: 0.6,
+        outerAlpha: 0.6,
+        innerAlpha: 1,
+        lightIntensity: 10,
+        modelAlpha: 1
     },
     {
-        //show everything
         percent: 0.8,
         outerAlpha: 0.6,
         innerAlpha: 1,
@@ -180,26 +172,69 @@ export const CameraWaypoints = [
     {
         percent: 0,
         z_pos: 0,
-        y_pos: 0
+        y_pos: 0,
+        x_pos: 0,
+        y_rot: 0
     },
     {
         percent: 0.2,
         z_pos: 5,
-        y_pos: 0
+        y_pos: 0,
+        x_pos: 0,
+        y_rot: 0
     },
     {
         percent: 0.3,
         z_pos: 10,
-        y_pos: 5
+        y_pos: 2,
+        x_pos: 0,
+        y_rot: 0
     },
     {
         percent: 0.4,
         z_pos: 15,
-        y_pos: 0
+        y_pos: 0,
+        x_pos: 0,
+        y_rot: 0
     },
     {
-        percent: 0.6,
+        percent: 0.5,
         z_pos: 5,
-        y_pos: 0
+        y_pos: -0.5,
+        x_pos: 8,
+        y_rot: 90
+    },
+    {
+        percent: 0.7,
+        z_pos: 5,
+        y_pos: -0.5,
+        x_pos: 8,
+        y_rot: 90
+    },
+    {
+        percent: 1,
+        z_pos: 5,
+        y_pos: -0.5,
+        x_pos: 8,
+        y_rot: 90
+    }
+]
+
+export const BustWaypoints = [
+    {
+        percent: 0.0,
+        opacity: 0
+    },
+    {
+        percent: 0.4,
+        opacity: 0
+    },
+    {
+        percent: 0.5,
+        opacity: 1
+    },
+    {
+        percent: 1.0,
+        opacity: 1
     }
 ]

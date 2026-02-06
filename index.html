@@ -28,6 +28,15 @@
 
     <div id="scroll-spacer" style="height: 1000vh;"></div>
 
+    <nav class="side-nav">
+        <div class="nav-item" onclick="jumpTo(0.1)"><span>About</span></div>
+        <div class="nav-item" onclick="jumpTo(0.2)"><span>Tech</span></div>
+        <div class="nav-item" onclick="jumpTo(0.3)"><span>Experience</span></div>
+        <div class="nav-item" onclick="jumpTo(0.6)"><span>The Core</span></div>
+        <div class="nav-item" onclick="jumpTo(0.7)"><span>Projects</span></div>
+        <div class="nav-item" onclick="jumpTo(1.0)"><span>Contact Info</span></div>
+    </nav>
+
     <div class="content-wrapper">
         <section class="content-section" data-percent="0"></section>
         <section class="content-section" data-percent="0.1">
@@ -44,22 +53,50 @@
                 <p>a lot of different languages</p>
                 <p>and frameworks.</p>
             </div>
+            <div class="floating-elements">
+                <div class="icon-blob" style="--top: 10%; --left: 20%; --delay: 0s;">JS</div>
+                <div class="icon-blob" style="--top: 10%; --left: 50%; --delay: 0s;">React.js</div>
+                <div class="icon-blob" style="--top: 80%; --left: 50%; --delay: 0s;">Springboot</div>
+                <div class="icon-blob" style="--top: 40%; --left: 25%; --delay: 0.75s;">Typescript</div>
+                <div class="icon-blob" style="--top: 70%; --left: 15%; --delay: 1s;">C++</div>
+                <div class="icon-blob" style="--top: 30%; --left: 80%; --delay: 2s;">Python</div>
+                <div class="icon-blob" style="--top: 80%; --left: 75%; --delay: 0.5s;">C#</div>
+                <div class="icon-blob" style="--top: 80%; --left: 25%; --delay: 0.5s;">Flask</div>
+                <div class="icon-blob" style="--top: 70%; --left: 65%; --delay: 0.25s;">Java</div>
+            </div>
             <!-- add icons of a few here, probably floating around local space?-->
         </section>
 
         <section class="content-section" data-percent="0.3">
             <div class="card left">
-                <p>Experience wise, I work</p>
-                <p>with things like Web, AI</p>
+                <p>I've worked with a wide range of systems</p>
+                <p>in spaces like Web, AI, Web3,</p>
                 <p>Art/Design, and Games Systems.</p>
             </div>
             <!-- add icons of the companies here, probably floating around local space?-->
+            <div class="floating-elements">
+                <div class="icon-blob" style="--top: 10%; --left: 20%; --delay: 0s;">
+                    <h3>TREE Industries</h3>
+                    <p>Software Engineer</p>
+                    <p>2 Years</p>
+                </div>
+                <div class="icon-blob" style="--top: 20%; --left: 65%; --delay: 0.75s;">
+                    <h3>THE FORGE ARENA</h3>
+                    <p>Fullstack Engineer</p>
+                    <p>2 Years</p>
+                </div>
+                <div class="icon-blob" style="--top: 70%; --left: 80%; --delay: 1s;">
+                    <h3>ProTech</h3>
+                    <p>Fullstack Engineer</p>
+                    <p>4 months</p>
+                </div>
+            </div>
         </section>
         <section class="content-section" data-percent="0.4">
             <div class="card right">
-                <p>I have experience across</p>
-                <p>a lot of different languages</p>
-                <p>and frameworks.</p>
+                <p>Experience wise, I work</p>
+                <p>towards learning the systems</p>
+                <p>rather than the frameworks.</p>
             </div>
         </section>
         <section class="content-section" data-percent="0.5">
@@ -75,11 +112,153 @@
                 <p>Every line of code is fueled by a passion for</p>
                 <p>creating immersive, intelligent systems.</p>
             </div>
+            <div class="floating-elements">
+                <div class="icon-blob" style="--top: 10%; --left: 20%; --delay: 0s;">JS</div>
+                <div class="icon-blob" style="--top: 10%; --left: 50%; --delay: 0s;">React.js</div>
+                <div class="icon-blob" style="--top: 80%; --left: 50%; --delay: 0s;">Springboot</div>
+                <div class="icon-blob" style="--top: 40%; --left: 25%; --delay: 0.75s;">Typescript</div>
+                <div class="icon-blob" style="--top: 70%; --left: 15%; --delay: 1s;">C++</div>
+                <div class="icon-blob" style="--top: 30%; --left: 80%; --delay: 2s;">Python</div>
+                <div class="icon-blob" style="--top: 80%; --left: 75%; --delay: 0.5s;">C#</div>
+                <div class="icon-blob" style="--top: 80%; --left: 25%; --delay: 0.5s;">Flask</div>
+                <div class="icon-blob" style="--top: 70%; --left: 65%; --delay: 0.25s;">Java</div>
+            </div>
         </section>
-        <section class="content-section" data-percent="0.7"></section>        <section class="content-section" data-percent="0.4"></section>
-        <section class="content-section" data-percent="0.8"></section> 
-        <section class="content-section" data-percent="0.9"></section> 
-        <section class="content-section" data-percent="1"></section> 
+        <section class="content-section" data-percent="0.7">
+            <div class="card full-width">
+                <div class="project-header">
+                    <h3>Project Showcase</h3>
+                    <p>A selection of my recent fullstack and game development work.</p>
+                </div>
+
+                <div class="project-list">
+                    <div class="project-entry">
+                        <div class="project-info">
+                            <h4>PORTFOLIO SITE</h4>
+                            <p>This site you're viewing right now!</p>
+                            <p><i>THREE.js, Javascript</i></p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SnoFlak/SnoFlak.github.io" class="btn-sm project-link">Repo</a>
+                        </div>
+                    </div>
+
+                    <div class="project-entry">
+                        <div class="project-info">
+                            <h4>MAGIC MOTION AI</h4>
+                            <p>An AI Text-to-3D Human Animation service.</p>
+                            <p><i>Typescript, Python, AWS, Docker, Blender, Supabase</i></p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://magicmotion.ai" class="btn-sm project-link">Site</a>
+                        </div>
+                    </div>
+
+                    <div class="project-entry">
+                        <div class="project-info">
+                            <h4>MINIAUDIO PLAYER</h4>
+                            <p>A simple audio playback software utilizing miniaudio and Dear ImGui</p>
+                            <p><i>C++</i></p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SnoFlak/miniaudio-player" class="btn-sm project-link">Repo</a>
+                        </div>
+                    </div>
+
+                    <div class="project-entry">
+                        <div class="project-info">
+                            <h4>THE FORGE ARENA</h4>
+                            <p>Web 3, Fast Paced, First Person Shooter game built on Unreal Engine 5</p>
+                            <p><i>Unreal Engine, React, Firebase</i></p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://playforge.gg/" class="btn-sm project-link">Site</a>
+                        </div>
+                    </div>
+
+                    <div class="project-entry">
+                        <div class="project-info">
+                            <h4>FLEX ERP</h4>
+                            <p>In Development. ERP software for companies to keep track of inventory, orders, customers, etc.</p>
+                            <p><i>React, C#, Python, MySQL</i></p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://magicmotion.ai" class="btn-sm project-link">Repo</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>        
+        
+        <section class="content-section" data-percent="0.8">
+            <div class="card full-width" style="border-bottom: 4px solid #00ffff;">
+                <div class="project-header">
+                    <h3>Other Projects</h3>
+                    <p>Things i've dabbled with, contributed to, or just find interesting.</p>
+                </div>
+
+                <div class="project-list">
+                    <div class="project-entry">
+                        <div class="project-info">
+                            <h4>JUMPGUYS</h4>
+                            <p>A Fall Guys clone game on the Core Platform</p>
+                            <p><i>CORE, lua</i></p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.coregames.com/games/893c07/jumpguys" class="btn-sm project-link">Site</a>
+                        </div>
+                    </div>
+
+                    <div class="project-entry">
+                        <div class="project-info">
+                            <h4>OCTAVE GAME ENGINE</h4>
+                            <p>Node based Game engine powered by Vulkan; Supports GC, WII, 3DS compilation</p>
+                            <p><i>C++, Lua</i></p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/mholtkamp/octave" class="btn-sm project-link">Repo</a>
+                        </div>
+                    </div>
+
+                    <div class="project-entry">
+                        <div class="project-info">
+                            <h4>MINIAUDIO PLAYER</h4>
+                            <p>A simple audio playback software utilizing miniaudio and Dear ImGui</p>
+                            <p><i>C++</i></p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SnoFlak/miniaudio-player" class="btn-sm project-link">Repo</a>
+                        </div>
+                    </div>
+
+                    <div class="project-entry">
+                        <div class="project-info">
+                            <h4>CORE ANIMATION PIPELINE</h4>
+                            <p>Scripts to bring rigs and animations into the Core Game Engine</p>
+                            <p><i>Python, Javascript, Blender</i></p>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://playforge.gg/" class="btn-sm project-link">Site</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section> 
+        <section class="content-section" data-percent="0.9">
+            <div class="card center" style="border-bottom: 4px solid #ffff00;">
+                <p>Thanks for visiting my portfolio!</p>
+                <p>I hope you enjoyed this experience.</p>
+                <p>Need my contact info? Continue down.</p>
+            </div>
+        </section> 
+        <section class="content-section" data-percent="1">
+            <div class="card center">
+                <p>Email: mathiasasletten@gmail.com</p>
+                <p>Github: <a href="https://github.com/SnoFlak" class="project-link">https://github.com/SnoFlak</a></p>
+            </div>
+        </section> 
 
     </div>
     

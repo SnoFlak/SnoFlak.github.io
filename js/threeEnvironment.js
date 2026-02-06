@@ -105,12 +105,22 @@ function animateCamera() {
 
 export function incrementGlobalTimeline() {
     const totalHeight = document.body.scrollHeight - window.innerHeight;
-    const stepSize = (totalHeight * 0.1);
-    const targetY = window.scrollY + stepSize;
+    const currentPercent = window.scrollY / totalHeight;
+    let nextStep = Math.ceil((currentPercent + 0.01) * 10) / 10;
+    nextStep = Math.min(nextStep, 1.0);
+    const targetY = nextStep * totalHeight;
+    
     window.scrollTo({
         top: targetY,
         behavior: 'smooth'
     });
+    // const totalHeight = document.body.scrollHeight - window.innerHeight;
+    // const stepSize = (totalHeight * 0.1);
+    // const targetY = window.scrollY + stepSize;
+    // window.scrollTo({
+    //     top: targetY,
+    //     behavior: 'smooth'
+    // });
 }
 
 export function getCamera() {

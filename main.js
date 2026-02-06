@@ -28,4 +28,14 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
 });
 
+window.jumpTo = function(percent) {
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    const targetY = percent * totalHeight;
+    
+    window.scrollTo({
+        top: targetY,
+        behavior: 'smooth'
+    });
+};
+
 render();

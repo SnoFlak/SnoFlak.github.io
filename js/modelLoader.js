@@ -29,6 +29,8 @@ export function loadBustIntoGroup(path, group) {
 
         model.children.forEach(child => {
             child.material.transparent = true;
+            child.material.roughness = 0.4;
+            child.material.thickness = 0.5;
             child.material.opacity = 0;
         });
 

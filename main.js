@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 import { render, incrementGlobalTimeline, getCamera, getRenderer } from "./js/threeEnvironment.js";
 
 const button = document.getElementById('continueButton');

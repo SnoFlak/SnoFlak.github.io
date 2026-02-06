@@ -5,6 +5,7 @@ import { createTube, animateTube } from './tubes.js';
 import { mapRange, lerp } from './helpers.js';
 import { CameraWaypoints, BlueSphereWaypoints, GreenSphereWaypoints, PurpleSphereWaypoints } from './waypoints.js';
 import { createDust } from './dust.js';
+import { tagLogic } from './tagLogic.js';
 
 let currentScroll = 0;
 let scrollFraction = 0;
@@ -104,7 +105,7 @@ function animateCamera() {
 
 export function incrementGlobalTimeline() {
     const totalHeight = document.body.scrollHeight - window.innerHeight;
-    const stepSize = Math.round(totalHeight / 10);
+    const stepSize = (totalHeight * 0.1);
     const targetY = window.scrollY + stepSize;
     window.scrollTo({
         top: targetY,
@@ -124,7 +125,6 @@ export function render() {
     requestAnimationFrame(render);
 
     currentScroll = lerp(currentScroll, scrollFraction, 0.05);
-
     let time = Date.now() * 0.002;
 
     dust.rotation.y += 0.001;
@@ -141,16 +141,10 @@ export function render() {
     
     tubes.forEach((tube) => {
         const sphere = grabSphere(tube.userData.sphereColor);
-        animateTube(tube, sphere.position);
+        animateTube(tube, sphere.position, currentScroll);
     })
 
-    // curve.points[0].copy(new THREE.Vector3(3.5, -1.8, 5));
-    // curve.points[2].copy(blueIcosphere.position);
-
-    // curve.points[1].x = (bust.position.x + blueIcosphere.position.x) / 2 + Math.sin(time) * 0.5;
-    // curve.points[1].y = (bust.position.y + blueIcosphere.position.y) / 2 + Math.cos(time) * 0.5;
-    // tube.geometry.dispose(); // Clean up old memory
-    // tube.geometry = new THREE.TubeGeometry(curve, 64, 0.1, 8, false);
+    tagLogic(currentScroll);
 
     renderer.render(scene, camera);
 }
@@ -159,5 +153,4 @@ window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     const docHeight = document.body.offsetHeight - window.innerHeight;
     scrollFraction = scrollTop / docHeight;
-    console.log(scrollFraction);
 });

@@ -6,6 +6,7 @@ import { lerp } from './helpers.js';
 export function createBust() {
     const group = new THREE.Group();
     loadBustIntoGroup("../res/bust_posed.glb", group);
+
     group.userData.waypoints = BustWaypoints;
 
     return group;

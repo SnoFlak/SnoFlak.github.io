@@ -238,3 +238,26 @@ export const BustWaypoints = [
         opacity: 1
     }
 ]
+
+export const TubeWaypoints = [
+    {
+        percent: 0.0,
+        innerOpacity: 0.0,
+        outerOpacity: 0.0
+    },
+    {
+        percent: 0.5,
+        innerOpacity: 0.0,
+        outerOpacity: 0.0
+    },
+    {
+        percent: 0.6,
+        innerOpacity: 1.0,
+        outerOpacity: 0.6
+    },
+    {
+        percent: 1.0,
+        innerOpacity: 1.0,
+        outerOpacity: 0.6
+    }
+]

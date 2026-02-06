@@ -1,13 +1,12 @@
 import * as THREE from 'three';
 import { loadBustIntoGroup } from './modelLoader.js';
-import { BustWaypoints } from './waypoints.js';
 import { lerp } from './helpers.js';
 
-export function createBust() {
+export function createBust(path, waypoints) {
     const group = new THREE.Group();
-    loadBustIntoGroup("../res/bust_posed.glb", group);
+    loadBustIntoGroup(path, group);
 
-    group.userData.waypoints = BustWaypoints;
+    group.userData.waypoints = waypoints;
 
     return group;
 }

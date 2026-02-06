@@ -3,7 +3,7 @@ import { createIcoSphere, animateSphere } from './icosphere.js';
 import { createBust, animateBust } from './bust.js';
 import { createTube, animateTube } from './tubes.js';
 import { mapRange, lerp } from './helpers.js';
-import { CameraWaypoints, BlueSphereWaypoints, GreenSphereWaypoints, PurpleSphereWaypoints } from './waypoints.js';
+import { CameraWaypoints, BlueSphereWaypoints, GreenSphereWaypoints, PurpleSphereWaypoints, BustWaypoints, WelcomeBustWaypoints } from './waypoints.js';
 import { createDust } from './dust.js';
 import { tagLogic } from './tagLogic.js';
 
@@ -51,7 +51,12 @@ icospheres.push(blueIcosphere);
 icospheres.push(purpleIcosphere);
 icospheres.push(greenIcosphere);
 
-const bust = createBust();
+const welcomeBust = createBust("../res/bust_posed_welcome.glb", WelcomeBustWaypoints);
+welcomeBust.scale.set(3,3,3);
+welcomeBust.position.set(0,-2.5,-7.5);
+scene.add(welcomeBust);
+
+const bust = createBust("../res/bust_posed.glb", BustWaypoints);
 bust.scale.set(3,3,3);
 bust.position.set(3.5, -3.5, 5)
 bust.rotation.y = THREE.MathUtils.degToRad(90)
@@ -63,7 +68,7 @@ const pTube = createTube(purpleIcosphere.position, "purple");
 tubes.push(gTube, bTube, pTube);
 scene.add(gTube, bTube, pTube);
 
-camera.position.set(0,0,5)
+camera.position.set(0,0,-10)
 
 
 function grabSphere(sphereColor) {
@@ -148,6 +153,7 @@ export function render() {
     );
     animateCamera();
     animateBust(bust, currentScroll);
+    animateBust(welcomeBust, currentScroll);
     
     tubes.forEach((tube) => {
         const sphere = grabSphere(tube.userData.sphereColor);

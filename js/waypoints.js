@@ -171,7 +171,14 @@ export const GreenSphereWaypoints = [
 export const CameraWaypoints = [
     {
         percent: 0,
-        z_pos: 0,
+        z_pos: -10,
+        y_pos: 0,
+        x_pos: 0,
+        y_rot: 0
+    },
+    {
+        percent: 0.1,
+        z_pos: -5,
         y_pos: 0,
         x_pos: 0,
         y_rot: 0
@@ -236,6 +243,25 @@ export const BustWaypoints = [
     {
         percent: 1.0,
         opacity: 1
+    }
+]
+
+export const WelcomeBustWaypoints = [
+    {
+        percent: 0.0,
+        opacity: 0
+    },
+    {
+        percent: 0.1,
+        opacity: 1
+    },
+    {
+        percent: 0.2,
+        opacity: 0
+    },
+    {
+        percent: 1.0,
+        opacity: 0
     }
 ]
 

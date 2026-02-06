@@ -6,7 +6,6 @@ export function tagLogic(currentScroll) {
 
         if (Math.abs(currentScroll - target) < 0.05) {
             section.classList.add('active');
-            console.log("[TAGLOGIC] called add .active for: ", section);
         } else {
             section.classList.remove('active');
         }

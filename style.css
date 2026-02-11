@@ -29,10 +29,11 @@ canvas {
     flex-direction: row;
     top: 50%;
     justify-content: center;
+    text-align: center;
 }
 #continueButtonContainer {
     position: fixed;
-    top: 90%;
+    top: 85%;
     left: 50%;
     transform: translateX(-50%);
     z-index:9999;
@@ -88,7 +89,7 @@ canvas {
 
 .card {
     background: rgba(15, 15, 15, 0.2);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(1px);
     padding: 2rem;
     border-radius: 15px;
     color: white;
@@ -267,6 +268,23 @@ canvas {
         padding-bottom: 80px;    /* Leave room for the 'Continue' button */
     }
 
+    .content-section.m-top-aligned {
+        justify-content: flex-start; /* Aligns to top of container */
+        padding-top: 60px;          /* Give it some room from the top edge */
+    }
+
+    .card {
+        padding: 0.8rem;
+        background: rgba(15, 15, 15, 0.05);
+    }
+
+    /* Adjust the card style for the top position */
+    .m-top-aligned .card {
+        margin-top: 20px !important;
+        border-bottom: none;
+        border-top: 3px solid #00ffff; /* Flip the glow to the top */
+    }
+
     .card.left, .card.right {
         width: 85% !important;   /* Give it some breathing room on the sides */
         margin: 0 auto !important;
@@ -323,6 +341,8 @@ canvas {
     .nav-item span {
         display: none; /* Keep it clean on small screens */
     }
+
+    
 }
 
 @keyframes float-drift {

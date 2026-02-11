@@ -276,7 +276,7 @@ canvas {
         transform: none !important;
         
         /* Glassmorphism push for mobile readability */
-        background: rgba(10, 10, 10, 0.7); 
+        background: rgba(10, 10, 10, 0.3); 
         backdrop-filter: blur(10px);
         border: 1px solid rgba(0, 255, 255, 0.3);
     }
@@ -301,7 +301,7 @@ canvas {
     }
 
     .icon-blob {
-        font-size: 0.7rem;
+        font-size: 0.57rem;
         padding: 5px 12px;
         /* Constrain their random positions so they stay in the top half */
         top: calc(var(--top) * 0.5) !important; 

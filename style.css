@@ -4,9 +4,11 @@
 body {
     height: 100%;
     color: aliceblue;
+    background-color: black;
     margin: 0;
     padding: 0;
     overflow-y: scroll;
+    overscroll-behavior-y: none;
 }
 h1 {
     position: absolute;
@@ -16,6 +18,9 @@ canvas {
     position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100dvh;
+    pointer-events: none;
     z-index: -1;
     background: radial-gradient(circle at center, #0062a8 0%, #000000 40%);
 }
@@ -65,6 +70,7 @@ canvas {
     box-sizing: border-box;
     opacity: 0;
     visibility: hidden;
+    pointer-events: auto;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
 }
@@ -246,6 +252,77 @@ canvas {
     width: 60px;
     background: #ff00ff;
     box-shadow: 0 0 10px #ff00ff;
+}
+
+@media (max-width: 768px) {
+    /* Ensure the container doesn't horizontal scroll */
+    .content-wrapper {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .content-section {
+        justify-content: center; /* Center the cards horizontally */
+        align-items: flex-end;    /* Push cards to the bottom 1/3 of the screen */
+        padding-bottom: 80px;    /* Leave room for the 'Continue' button */
+    }
+
+    .card.left, .card.right {
+        width: 85% !important;   /* Give it some breathing room on the sides */
+        margin: 0 auto !important;
+        position: relative;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        
+        /* Glassmorphism push for mobile readability */
+        background: rgba(10, 10, 10, 0.7); 
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 255, 255, 0.3);
+    }
+
+    .card.full-width {
+        width: 90% !important;
+        height: 70vh; /* Don't take up the whole screen so we see the 3D */
+        overflow-y: auto;
+    }
+
+    .project-entry {
+        flex-direction: column; /* Stack Title and Links */
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .project-links {
+        width: 100%;
+        justify-content: flex-start;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 10px;
+    }
+
+    .icon-blob {
+        font-size: 0.7rem;
+        padding: 5px 12px;
+        /* Constrain their random positions so they stay in the top half */
+        top: calc(var(--top) * 0.5) !important; 
+    }
+
+    .side-nav {
+        right: 15px;
+        top: auto;
+        bottom: 120px; /* Sit above the continue button */
+        transform: none;
+        gap: 20px;
+    }
+
+    .nav-item {
+        width: 40px; /* Larger targets for thumbs */
+        height: 4px;
+    }
+    
+    .nav-item span {
+        display: none; /* Keep it clean on small screens */
+    }
 }
 
 @keyframes float-drift {
